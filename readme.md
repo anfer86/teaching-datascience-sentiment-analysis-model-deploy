@@ -15,13 +15,28 @@ $ git --version
 
 Clonar o repositório do GitHub e usar o `npm` do Node.js para instalar as dependências do projeto.
 ```bash
-$ git clone https://github.com/anfer86/teaching-js-consulta-cep.git
-$ cd teaching-js-consulta-cep
+$ git clone https://github.com/anfer86/teaching-datascience-sentiment-analysis-model-deploy.git
+$ cd teaching-datascience-sentiment-analysis-model-deploy
 ```
 
 ## Utilização
 
-Para rodar a aplicação abrir o arquivo `src/formulario_cep.html`:
+Para rodar a aplicação temos que colocar o servidor escutando uma porta local:
+```bash
+$ cd teaching-datascience-sentiment-analysis-model-deploy
+$ cd server-side
+$ python server.py
+```
+Pode ser necessária a instalaçao de algumas bibliotecas para colocar esse servidor para rodar. Posteriormente irei colocar um arquivo requirements.txt com essas bibliotecas.
+
+Para testar se esta funcionando corretamente abrir outro terminal e executar o script de teste:
+```bash
+$ cd teaching-datascience-sentiment-analysis-model-deploy
+$ cd client-side
+$ python request.py
+```
+
+Por fim abrir a página dentro da pasta `client-side` e abrir o arquivo `webpage.html`. 
 
 ## Desenvolvimento
 
