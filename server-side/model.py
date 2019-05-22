@@ -29,7 +29,6 @@ for i in range(len(data.Review_preprocessado)):
             counter_positivos[word] += 1
             counter_todos[word] += 1    
 
-
 taxa_pos_neg = {}
 
 # Filtrar termos que apareceram pelo menos 10 vezes
@@ -37,8 +36,7 @@ taxa_pos_neg = {}
 valor_minimo = 10
 for word, contagem in list(counter_todos.most_common()):
     if(contagem >= valor_minimo):
-        taxa_pos_neg[word] = 
-            round( counter_positivos[word] / float(counter_negativos[word]+1), 3 )
+        taxa_pos_neg[word] = round( counter_positivos[word] / float(counter_negativos[word]+1), 3 )
 
 
 score_pos_neg = {}
@@ -55,7 +53,8 @@ for word, taxa in taxa_pos_neg.items():
 # Nosso modelo é o score_pos_neg
 model = score_pos_neg
 
-print('Salvando o modelo: ' + model_filename)
+print(model)
 model_filename = 'model.pkl'
+print('Salvando o modelo: ' + model_filename)
 model_file = open(model_filename, 'wb')
 pickle.dump(model, model_file)
