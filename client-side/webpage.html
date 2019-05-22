@@ -3,24 +3,22 @@
 <head>
     <title>Sentiment Analysis Web App</title>
     <meta charset="utf-8">
-    <meta name="viewport"  content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 
 <body>
     <div class="container col-4">
-        <h3>Classifique sua revisão como Positiva ou Negativa.</h1>
+        <h3>Classifique sua revisão como Positiva ou Negativa.</h3>
         <form>           
             <div class="form-group">
                 <label for="review">Escreva sua revisão (em inglês):</label>
-                <textarea class="form-control"rows="5" id="review" placeholder="Example: This film was amazing!"></textarea>
+                <textarea class="form-control" rows="5" id="review" placeholder="Example: This film was amazing!"></textarea>
             </div>
             <button type="button" class="btn btn-success" id="enviar">Enviar</button>
         </form>
             <div class="text-light mt-4 text-center p-1">                
                 <p id="result"></p>                
-            </div>
-        
+            </div>        
     </div>
 </body>
 
@@ -55,11 +53,12 @@
         if (!review){
             return alert('A revisão está vazia. Escreva uma revisão de filme.')
         }
+        
 
         var xhr = new XMLHttpRequest();
 
         xhr.onreadystatechange = function(){
-            if(xhr.readyState === 4 && xhr.status === 200){                
+            if(xhr.readyState === 4 && xhr.status === 200){                       
                 mostrarResultado( parseInt(xhr.responseText) );
                 }
         }
@@ -71,9 +70,6 @@
         xhr.open ("POST", "http://localhost:5000/sentiment_analysis");
         var jsonObject = JSON.stringify({'text' : review});
         xhr.send (jsonObject);
-        
-
-        
     });
 
 </script>
