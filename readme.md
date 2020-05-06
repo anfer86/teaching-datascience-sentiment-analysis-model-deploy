@@ -31,7 +31,7 @@ $ env\Scripts\activate.bat
 
 Ativar o Virtual Environment no Linux
 ```bash
-$ source env-sentiment-analysis\bin\activate
+$ source env\bin\activate
 ```
 
 Instalar as dependências presentes no arquivo `requirements.txt`
