@@ -1,16 +1,20 @@
 import numpy as np
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 from flask_cors import CORS
 import pickle
-import helper
-from helper import predict_from_sentenca, preprocessar_sentenca
+import app.helper
+from app.helper import predict_from_sentenca, preprocessar_sentenca
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder='front-end')
 CORS(app)
 
 # Carregando o modelo (os scores)
 print('Carregando o modelo')
-model = pickle.load(open('model.pkl','rb'))
+model = pickle.load(open('app/model.pkl','rb'))
+
+@app.route("/")
+def index():
+    return render_template("index.html")
 
 @app.route('/sentiment_analysis', methods=['POST'])
 def predict():
@@ -30,7 +34,3 @@ def predict():
 	output = jsonify(prediction)
 	print(output)
 	return output
-    
-
-if __name__ == '__main__':
-    app.run(port=5000, debug=True)

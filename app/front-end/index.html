@@ -41,7 +41,7 @@
                 break;
             case 0:
                 $('#result').attr('class','bg-dark');
-                $('#result').html('Por gentileza. Detalhes mais a sua revisão!');
+                $('#result').html('Por gentileza. Detalhe mais a sua revisão!');
                 break;
         }
     }
@@ -67,7 +67,7 @@
             return alert('Erro ao contectar com o serviço de predição.');
         }
 
-        xhr.open ("POST", "http://localhost:5000/sentiment_analysis");
+        xhr.open ("POST", "/sentiment_analysis");
         var jsonObject = JSON.stringify({'text' : review});
         xhr.send (jsonObject);
     });

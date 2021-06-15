@@ -41,19 +41,37 @@ $ pip install -r requirements.txt
 
 ## Utilização
 
-Para rodar a aplicação temos que colocar o servidor escutando uma porta local:
+Diferentes formas de inicializar a aplicação para Windows e Linux:
+
+- No Windows: executando o arquivo `run.py`
 ```bash
-$ cd server-side
-$ python server.py
+$ python run.py
 ```
 
-Por fim abrir a página dentro da pasta `client-side` e abrir o arquivo `webpage.html`.
-
-Para testar a aplicação usando Python abrir outro terminal e executar o script de teste:
+- No Windows: usando o WSGI waitress-serve (disponível no `requirements.txt`, instalado na etapa anterior)
 ```bash
-$ cd client-side
-$ python request.py
+$ waitress-serve --listen=localhost:8080 app:app
 ```
+
+- No Linux: executando o arquivo `run.py`
+```bash
+$ python run.py
+```
+
+- No Linux: usando o WSGI gunicorn (disponível no `requirements.txt`, instalado na etapa anterior)
+```bash
+$ gunicorn app:server
+```
+
+Depois de inicializar a aplicação de qualquer uma das formas acessar http://localhost:8080 e testar a aplicação com avaliações em inglês.
+
+## Deploy no Heroku
+
+1. Criar um repositório no seu github a partir deste projeto.
+2. Realizar o cadastro/login na plataforma Heroku (https://www.heroku.com/).
+3. Criar um novo app e escolher como método de deploy o github. Aqui tem que permitir a autorização do heroku para acessar os projetos de teu github
+4. Escolher o projeto que se quer fazer deploy e clicar em deploy.
+
 
 ## Autores
 
